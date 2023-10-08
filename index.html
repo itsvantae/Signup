@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign-up Form</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: cursive;
+        }
+
+        .container {
+            background-color: #5C8374;
+            max-width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 5px solid #183D3D;
+            border-radius: 5px;
+            box-shadow: 5px 10px #040D12;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('D:\PT\reg.jpg');">
+    <div class="container">
+        <h1>Sign-up Form</h1>
+        <form id="signupForm" onsubmit="validateForm(event)">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter valid email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter valid pass" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script src="script.js">
+
+        function validateForm(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+
+            if (!passwordPattern.test(password)) {
+                alert('Password must be at least 8 characters and contain at least one uppercase letter, one special character, and one number.');
+                return;
+            }
+
+            alert('Successful!');
+        }
+
+    </script>
+</body>
+
+</html>
